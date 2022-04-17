@@ -17,12 +17,21 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from post.views import MyTokenObtainPairSerializer
+from post.views import MyTokenObtainPairSerializer, PostListing, PostCreateView, PostDeleteView, PostUpdateView, \
+    LikeView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('api-auth/', include('rest_framework.urls'))
+    path('api-auth/', include('rest_framework.urls')),
+    path('PostListing/', PostListing.as_view() ),
+    path('PostCreateView/', PostCreateView.as_view() ),
+    path('PostDeleteView/<pk>', PostDeleteView.as_view() ),
+    path('PostUpdateView/<pk>', PostUpdateView.as_view() ),
+    path('LikeView/',LikeView.as_view() ),
+
+
+
 
 ]
