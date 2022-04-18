@@ -11,6 +11,11 @@ class Post(models.Model):
     description = models.CharField(max_length=100)
     created_date = models.DateTimeField(auto_now_add=True)
     delete_flag = models.BooleanField(default=False)
+    image = models.ImageField(upload_to='images')
+
+    def __str__(self):
+        return self.title
+
 class Like(models.Model):
     """
     Database Table used to store All likes based on the user
